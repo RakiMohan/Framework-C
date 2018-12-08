@@ -16,3 +16,11 @@ C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\SmartTrack\bi
 C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.csprojResolveAssemblyReference.cache
 C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.dll
 C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.pdb
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack\bin\Debug\SmartTrack_Supplier.dll.config
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack\bin\Debug\SmartTrack_Supplier.dll
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack\bin\Debug\SmartTrack_Supplier.pdb
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.csprojAssemblyReference.cache
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.csproj.CoreCompileInputs.cache
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.csproj.CopyComplete
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.dll
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack_Supplier\obj\Debug\SmartTrack_Supplier.pdb

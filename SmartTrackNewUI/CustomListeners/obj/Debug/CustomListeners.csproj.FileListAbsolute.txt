@@ -7,3 +7,10 @@ C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\SmartTrack\bi
 C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.csprojResolveAssemblyReference.cache
 C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.dll
 C:\SMARTTrack-MAIN-Automation-cwcreation\Scenarios\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.pdb
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack\bin\Debug\CustomListeners.dll
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack\bin\Debug\CustomListeners.pdb
+F:\local\Framework-C\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.csprojAssemblyReference.cache
+F:\local\Framework-C\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.csproj.CoreCompileInputs.cache
+F:\local\Framework-C\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.csproj.CopyComplete
+F:\local\Framework-C\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.dll
+F:\local\Framework-C\SmartTrackNewUI\CustomListeners\obj\Debug\CustomListeners.pdb
