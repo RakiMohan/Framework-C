@@ -23,3 +23,4 @@ F:\local\Framework-C\SmartTrackNewUI\SmartTrack_MSP_OB\obj\Debug\SmartTrack_MSP_
 F:\local\Framework-C\SmartTrackNewUI\SmartTrack_MSP_OB\obj\Debug\SmartTrack_MSP_OB.csproj.CopyComplete
 F:\local\Framework-C\SmartTrackNewUI\SmartTrack_MSP_OB\obj\Debug\SmartTrack_MSP_OB.dll
 F:\local\Framework-C\SmartTrackNewUI\SmartTrack_MSP_OB\obj\Debug\SmartTrack_MSP_OB.pdb
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack_MSP_OB\obj\Debug\SmartTrack_MSP_OB.csprojAssemblyReference.cache

@@ -33,6 +33,8 @@ namespace SmartTrack_Automation
         public static @ReadExcel excelHelper;
         public static Result results;
         public static ExtentReports _ExecutionReport,_LabelReport;
+        public ExtentTest parent;
+        public ExtentTest child;
         public static DataRow dtRow;
         public static DataRowCollection lst_MasterSheetRow, lst_Client_MasterSheetRow,lst_Client_MainSheetRow,lst_Client_DataSheetRow;
         public static List<Master> lst_MasterSheetData;
@@ -54,6 +56,7 @@ namespace SmartTrack_Automation
             cmnm = new CommonMethods();
             excelHelper = new ReadExcel();
             results = new Result();
+            StartReport();
 
         }
         //[TestFixtureSetUp]
@@ -69,7 +72,8 @@ namespace SmartTrack_Automation
             dict_Datasheet = new Dictionary<Object, DataRow>();
             lst_Client_TestStepData = new List<DataRow>();
             DataHandler.lst_DataObjectParams = new List<DataSheetParams>();
-            
+            //_kwm._WDWait = _kwm.WebDriver_Wait_Handler(, Constants.ExplicitWaitTime);
+
         }
 
         #region BrowserInstances
@@ -163,8 +167,6 @@ namespace SmartTrack_Automation
             }
         }
 
-        
-
         public static ExtentReports getExecutionReport()
         {
             if (_ExecutionReport != null)
@@ -201,7 +203,7 @@ namespace SmartTrack_Automation
             ConfigurationManager.AppSettings["Client_Browser"] = lst_MasterSheetRow[0]["BrowserAPP"].ToString();
             ConfigurationManager.AppSettings["Supplier_Browser"] = lst_MasterSheetRow[0]["BrowserSUP"].ToString();
             //ConfigurationManager.AppSettings["CW_User"] = lst_MasterSheetRow[0]["BrowserCW"].ToString();
-
+            
         }
         #endregion
 
@@ -210,7 +212,9 @@ namespace SmartTrack_Automation
         {
             try
             {
+                _driver.Manage().Window.Maximize();
                 _driver.Navigate().GoToUrl(sURL);
+                
             }
             catch(Exception e)
             {
@@ -393,14 +397,14 @@ namespace SmartTrack_Automation
         {
             try
             {
-                initialise_LocalObjects();
                 Framework_Initialisers();
+                initialise_LocalObjects();
                 getMasterFileData();
                 setMasterConfig();
                 getMasterSheetData();
                 getMainSheetData();
                 //getDataSheetRow();
-                
+                ReportHandler._ParentTest = getExecutionReport().StartTest(" Test Scenario execution for Client : " + ConfigurationManager.AppSettings["Client"]);
 
                 Console.WriteLine("Executed testFixtureSetup()"+DateTime.Now);
                 Thread.Sleep(5000);
@@ -417,14 +421,16 @@ namespace SmartTrack_Automation
                 
             }catch(Exception e){
                 Console.WriteLine("Excetpion - " + e);
+                Assert.Fail(e.Message);
             }
 
         }
         [SetUp]
         public void setupRun()
         {
-            Console.WriteLine("Executed setupRun()");
-           // getMasterFileData();
+            //Console.WriteLine("Executed setupRun()");
+            
+            ReportHandler._ChildTest = getExecutionReport().StartTest(TestContext.CurrentContext.Test.Name);
         }
         #endregion
        
@@ -435,6 +441,7 @@ namespace SmartTrack_Automation
             Console.WriteLine("Executed tearDownRun() - Test status :" + TestContext.CurrentContext.Result.Status);
             dict_TestCaseExecutionStatus.Add(TestContext.CurrentContext.Test.Name, TestContext.CurrentContext.Result.Status);
             PreviousTestExecutionStatus = TestContext.CurrentContext.Result.Status;
+            ReportHandler._getParentTest().AppendChild(ReportHandler._getChildTest());
             
         }
         [TestFixtureTearDown]
@@ -444,8 +451,10 @@ namespace SmartTrack_Automation
            // ExecuteStep("Closing Browsers",()=> _Init_CloseDrivers());
            _Init_CloseDrivers();
            LogHandler.Instance._CloseLogger();
-           //ExecuteStep("Closing Log File", () => LogHandler.Instance._CloseLogger(),false);
-           
+            //ExecuteStep("Closing Log File", () => LogHandler.Instance._CloseLogger(),false);
+            getExecutionReport().EndTest(ReportHandler._getParentTest());
+            getExecutionReport().Flush();
+            getExecutionReport().Close();
            Console.WriteLine("Executed testFixtureTearDown()" + DateTime.Now);
 
         }
@@ -523,123 +532,25 @@ namespace SmartTrack_Automation
         //    }
         //}
         
-        public Result _Login(IWebDriver WDriver, DataRow LoginData)
+        public void _Login(IWebDriver WDriver, DataRow LoginData)
         {
             try
             {
-                ExecuteStep("Navigate To URL", ()=>_NavigateToURL(WDriver, ConfigurationManager.AppSettings["URL1"]),true,true);
-                
-                _kwm.sendText(WDriver, KeyWords.locator_ID, KeyWords.ID_txtEmailAddress, _getLoginUser(), false);
-                _kwm.sendText(WDriver, KeyWords.locator_ID, KeyWords.ID_txtEmailAddress, ConfigurationManager.AppSettings["Pwd"], false);
+                ExecuteStep("Navigate To URL", ()=>_NavigateToURL(WDriver, ConfigurationManager.AppSettings["URL1"]));
+                // _kwm._WDWait = _kwm.WebDriver_Wait_Handler(WDriver, Constants.ExplicitWaitTime);
+                Thread.Sleep(3000);
+                _kwm.sendText(WDriver, KeyWords.locator_ID, KeyWords.ID_txtEmailAddress, LoginData["P1"].ToString(), false);
+                _kwm.sendText(WDriver, KeyWords.locator_ID, KeyWords.ID_txtPassword, LoginData["P2"].ToString(), false);
+                _kwm.click(WDriver,KeyWords.locator_ID, "DefaultContent_btnLog");
 
             }catch(Exception e)
             {
 
             }
 
-
-
-
-           
-
-            
-            try
-            {
-                new WebDriverWait(WDriver, TimeSpan.FromSeconds(120)).Until(ExpectedConditions.ElementExists((By.Id(KeyWords.ID_txtEmailAddress))));
-            }
-            catch
-            {
-                try
-                {
-                    new WebDriverWait(WDriver, TimeSpan.FromSeconds(120)).Until(ExpectedConditions.ElementExists((By.Id(KeyWords.ID_txtEmailAddress))));
-                }
-                catch
-                {
-                    //
-                }
-            }
-            
-
-            if (results.Result1 == KeyWords.Result_FAIL)
-            {
-                return results;
-            }
-            //ImplicitTwentySeconds(WDriver);
-           // results = kwm.sendText(WDriver, KeyWords.locator_ID, KeyWords.ID_txtPassword, pwd, false);
-            if (results.Result1 == KeyWords.Result_FAIL)
-            {
-                return results;
-            }
-            //ImplicitTwentySeconds(WDriver);
-            //results = kwm.click(WDriver, KeyWords.locator_ID, KeyWords.ID_btnLogin);
-            if (results.Result1 == KeyWords.Result_FAIL)
-            {
-                return results;
-            }
-            // Thread.Sleep(5000);
-            // Implicitt(WDriver);
-            //ImplicitThirtySeconds(WDriver);
-            // Console.WriteLine("Testing Login error msg");
-            //if (kwm.isElementPresent(WDriver, KeyWords.ID_btnLogin))
-            //{
-            //    Thread.Sleep(5000);
-            //}
-            //if (kwm.isElementPresent(WDriver, KeyWords.ID_DefaultContent_errorPanel))
-            //{
-            //    // Console.WriteLine("Testing Login error msg1");
-            //    results = kwm.Get_Err_Login(WDriver, KeyWords.locator_ID, KeyWords.ID_DefaultContent_lblError);
-            //    if (results.Result1 == KeyWords.Result_PASS)
-            //    {
-            //        if (results.ErrorMessage != "")
-            //        {
-            //            results.Result1 = KeyWords.Result_FAIL;
-            //            return results;
-            //        }
-
-            //    }
-            //    if (results.Result1 == KeyWords.Result_FAIL)
-            //    {
-            //        return results;
-            //    }
-            //}
-
-            Boolean bFlag = false;
-            for (int i = 1; i < 200; i++)
-            {
-                Thread.Sleep(100);
-
-                // if (kwm.isElementDisplayed(WDriver, KeyWords.ID_Menu_gnmenu))
-
-                //Added new method as per new ui change
-                //if (kwm.isElementDisplayedXpath(WDriver, KeyWords.ID_Menu_gnmenu))
-                //{
-                //    bFlag = true;
-                //    Thread.Sleep(100);
-                //    //  Console.WriteLine("i count ---> ");
-                //    //  Console.WriteLine(i);
-
-                //}
-                if (bFlag)
-                    break;
-            }
-            if (bFlag)
-            {
-                results.Result1 = KeyWords.Result_PASS;
-                results.ErrorMessage = KeyWords.MSG_strLoginsuccessfully;
-                return results;
-            }
-            if (!_kwm.isElementPresent(WDriver, KeyWords.ID_Menu_gnmenu))
-            {
-                results.Result1 = KeyWords.Result_FAIL;
-                results.ErrorMessage = KeyWords.MSG_strLoginTakingLongTime;
-                return results;
-            }
-            results.Result1 = KeyWords.Result_PASS;
-            results.ErrorMessage = KeyWords.MSG_strLoginsuccessfully;
-            return results;
         }
 
-        public void ExecuteStep(string sMessage, Action method, bool bDependentOnAbove = true, bool bStopExecutionOnFail=true)
+        public void ExecuteStep(string sMessage, Action method, bool bDependentOnAbove = false, bool bStopExecutionOnFail=true)
         {
 
             try
@@ -650,6 +561,7 @@ namespace SmartTrack_Automation
                     if (Result.PrevStepResult == TestState.Success)
                     {
                         method();
+                        
                         Result.PrevStepResult = TestState.Success;
                         Assert.Pass(sMessage + "- Execution: Pass");
                     }
@@ -657,9 +569,9 @@ namespace SmartTrack_Automation
                     {
                         Result.PrevStepResult = TestState.Skipped;
                         Console.WriteLine(sMessage + ": Skipped");
-                        Console.WriteLine("Skipped executing -" + sMessage + ". as "+lst_StepMesages.Last()+" Skipped");
+                        //Console.WriteLine("Skipped executing -" + sMessage + ". as "+lst_StepMesages.Last()+" Skipped");
                         LogHandler.Instance.LogStep(LogLevel.Severe, sMessage + ": Skipped");
-                        LogHandler.Instance.LogStep(LogLevel.Warning, "Unable to Execute -" + sMessage + ". as " + lst_StepMesages.Last() + " Failed");
+                       // LogHandler.Instance.LogStep(LogLevel.Warning, "Unable to Execute -" + sMessage + ". as " + lst_StepMesages.Last() + " Failed");
                         //throw new Exception("Unable to Execute -" + sMessage + ". Previous Step Failed");
                     }
 

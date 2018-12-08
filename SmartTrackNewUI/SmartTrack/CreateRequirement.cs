@@ -2113,7 +2113,7 @@ namespace SmartTrack_Automation
             }
         }
         
-        public void NavigateTo()
+        public void NavigateToPage()
         {
             try
             {

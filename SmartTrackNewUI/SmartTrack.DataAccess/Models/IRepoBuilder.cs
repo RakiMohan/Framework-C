@@ -10,7 +10,7 @@ namespace SmartTrack.DataAccess.Models
     public interface IRepoBuilder
     {
        void buildRepository(DataRow dr);
-       void NavigateTo();
+       void NavigateToPage();
        void setWebdriverWait();
        void setWebdriverWait(int val);
 

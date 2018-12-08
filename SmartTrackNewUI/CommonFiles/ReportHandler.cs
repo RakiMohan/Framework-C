@@ -18,7 +18,7 @@ namespace CommonFiles
             if (_ParentTest != null)
                 return _ParentTest;
             else
-                throw new Exception("ExtentTest Variable is null. Please set the value for ExtentTest.var_ExtTest to use extent reports.");
+                throw new Exception("Parent ExtentTest Variable is null. Please set the value for ExtentTest.var_ExtTest to use extent reports.");
         }
         public static ExtentTest _getChildTest()
         {
@@ -26,7 +26,7 @@ namespace CommonFiles
             if (_ChildTest != null)
                 return _ChildTest;
             else
-                throw new Exception("ExtentTest Variable is null. Please set the value for ExtentTest.var_ExtTest to use extent reports.");
+                throw new Exception(" Child ExtentTest Variable is null. Please set the value for ExtentTest.var_ExtTest to use extent reports.");
         }
         public static ExtentTest _getLblParentTest()
         {
