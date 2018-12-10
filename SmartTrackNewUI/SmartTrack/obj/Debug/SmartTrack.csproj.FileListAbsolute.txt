@@ -180,3 +180,4 @@ F:\local\Framework-C\SmartTrackNewUI\SmartTrack\obj\Debug\SmartTrack.csproj.Core
 F:\local\Framework-C\SmartTrackNewUI\SmartTrack\obj\Debug\SmartTrack.csproj.CopyComplete
 F:\local\Framework-C\SmartTrackNewUI\SmartTrack\obj\Debug\SmartTrack.dll
 F:\local\Framework-C\SmartTrackNewUI\SmartTrack\obj\Debug\SmartTrack.pdb
+F:\local\Framework-C\SmartTrackNewUI\SmartTrack\bin\Debug\SeleniumExtras.WaitHelpers.dll

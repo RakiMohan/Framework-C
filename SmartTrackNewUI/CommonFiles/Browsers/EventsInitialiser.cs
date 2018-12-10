@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.Events;
-using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace CommonFiles
 {
     public class EventsInitialiser : LogHandler
     {
+        private static WebDriverWait _WDWait;
         public static void _TriggerDriverEvents(EventFiringWebDriver eventDriver)
         {
             eventDriver.Navigated += _eventDriver_Navigated;
@@ -19,6 +21,7 @@ namespace CommonFiles
             eventDriver.FindingElement += eventDriver_FindingElement;
             eventDriver.FindElementCompleted += eventDriver_FindElementCompleted;
             eventDriver.ElementValueChanged += eventDriver_ElementValueChanged;
+            _WDWait = new WebDriverWait(eventDriver,TimeSpan.FromSeconds(Constants.ExplicitWaitTime));
         }
 
         static void eventDriver_ElementValueChanged(object sender, WebElementEventArgs e)
@@ -37,6 +40,9 @@ namespace CommonFiles
         {
             Console.WriteLine("finding Element-" + e.Element);
             LogHandler.Instance.LogStep("finding Element - " + e.Element);
+            //if(!(e.Driver.FindElement(e.FindMethod).Displayed))
+            //    _WDWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(e.FindMethod));
+            
         }
 
         static void eventDriver_ElementClicking(object sender, WebElementEventArgs e)
