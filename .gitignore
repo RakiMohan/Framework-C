@@ -1,2 +1,6 @@
 .vs/
 obj/
+debug/
+SmartTrackNewUI/**/Log
+SmartTrackNewUI/**/ErrorScreenshots
+SmartTrackNewUI/**/Reports
