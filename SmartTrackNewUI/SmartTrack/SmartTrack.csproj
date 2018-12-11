@@ -101,6 +101,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="SeleniumNunit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\SeleniumNunit.dll</HintPath>

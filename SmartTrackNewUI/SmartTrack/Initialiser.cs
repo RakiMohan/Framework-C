@@ -54,6 +54,11 @@ namespace SmartTrack_Automation
             cmnm = new CommonMethods();
             excelHelper = new ReadExcel();
             results = new Result();
+<<<<<<< HEAD
+=======
+            StartReport();
+            
+>>>>>>> Dev
 
         }
         //[TestFixtureSetUp]
