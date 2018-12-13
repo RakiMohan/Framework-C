@@ -1,2 +1,8 @@
-storage.ide
-storage.ide-wal
+/**/obj/**
+/**/bin/**
+.vs/
+obj/
+debug/
+SmartTrackNewUI/**/Log
+SmartTrackNewUI/**/ErrorScreenshots
+SmartTrackNewUI/**/Reports
