@@ -63,11 +63,11 @@ namespace CommonFiles
         {
             if (log != null)
             {
-                //log.Write("\n\r");
-                log.Write("{0} {1}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString());
+                log.Write("\n\r");
+                log.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString());
                 log.Write("  :");
                 log.Write("{0}", slog);
-                log.WriteLine("");
+                log.Write("\n-------------------------------");
             }
                 
             

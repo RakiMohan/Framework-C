@@ -1,9 +1,6 @@
-/**/obj/**
-/**/bin/**
 .vs/
 obj/
 debug/
 SmartTrackNewUI/**/Log
 SmartTrackNewUI/**/ErrorScreenshots
 SmartTrackNewUI/**/Reports
-SmartTrackNewUI/**/Debug

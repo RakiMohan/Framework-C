@@ -25,12 +25,9 @@ namespace SmartTrack_Automation
 
             foreach (DataRow dr in getTestStepData(_params[0].ToString(), _params[1].ToString(), _params[2].ToString()))
             {
-                
-                CreateRequirement obj_CreateRequirement = new CreateRequirement(driverMSP,getKWM(),getCMNM(),dr);
-                //driverMSP.Url = "https://transformationqa1.hcmondemand.net";
-                ExecuteStep("Login to Application", () => _Login(driverMSP, dr));
-               // ExecuteStep("Navigate to Create Requirement Page",()=> obj_CreateRequirement.NavigateToPage(),true);
 
+                CreateRequirement obj_CreateRequirement = new CreateRequirement(driverMSP,getKWM(),getCMNM(),dr);
+                driverMSP.Url = "https://transformationqa1.hcmondemand.net";
                 
             }
         }
