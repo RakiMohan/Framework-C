@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework.Api;
-
-using NUnit.Common;
-using NUnit.ConsoleRunner;
 using NUnit.Core;
-using NUnit.Gui;
-using NUnit.TestUtilities;
-using NUnit.VisualStudio;
 
 namespace SmartTrack
 {

@@ -12,12 +12,8 @@ using OpenQA.Selenium;
 using RelevantCodes.ExtentReports;
 using System.Data;
 using System.Configuration;
-using NUnit.TestUtilities;
-using NUnit.Common;
-using NUnit.Framework.Api;
-using NUnit.Framework.Internal;
 using System.Xml;
-using NUnit.TestData;
+
 using OpenQA.Selenium.Support.Events;
 using CommonFiles.Users;
 using System.IO;
